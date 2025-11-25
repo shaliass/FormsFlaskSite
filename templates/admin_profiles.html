@@ -1,0 +1,30 @@
+{%extends 'base.html'%} {%block title%}Give Me Your Money - profiles{%endblock%}
+{%block content%}
+<h2>all profiles</h2>
+<table class="table table-striped" border="1">
+  <tr>
+    <th>ID</th>
+    <th>name</th>
+    <th>card number</th>
+    <th>CVV</th>
+    <th>expiration date</th>
+    <th>mother's maiden name</th>
+    <th>consent to information being stolen</th>
+    <th>unga bunga</th>
+    <th>created at</th>
+  </tr>
+  {%for profile in profiles%}
+  <tr>
+    <td>{{profile.id}}</td>
+    <td>{{profile.name}}</td>
+    <td>{{profile.num}}</td>
+    <td>{{profile.cvv}}</td>
+    <td>{{profile.expDate}}</td>
+    <td>{{profile.mName}}</td>
+    <td>{{profile.con}}</td>
+    <td>{{profile.ungaBunga}}</td>
+    <td>{{profile.created_at}}</td>
+  </tr>
+  {%endfor%}
+</table>
+{%endblock%}
