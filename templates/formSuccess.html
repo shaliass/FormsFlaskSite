@@ -1,0 +1,18 @@
+<!-- page that displays results once you've successfully entered them -->
+{% extends "base.html" %}
+{% block content %}
+<h2 class="success">submitted successfully!</h2>
+
+<div>
+<h3>your information:</h3>
+<p><strong>name:</strong> {{ name }}</p>
+<p><strong>credit card number:</strong> {{ num }}</p>
+<p><strong>CVV:</strong> {{ cvv }}</p>
+<p><strong>expiration date:</strong> {{ expDate }}</p>
+<p><strong>mother's maiden name:</strong> {{ mName }}</p>
+<p><strong>unga bunga:</strong> {{ "Yes" if ungaBunga else "No" }}</p>
+</div>
+
+<a href="/">create another profile</a>
+
+{%endblock%}
