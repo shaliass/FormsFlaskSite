@@ -11,7 +11,8 @@
     <th>mother's maiden name</th>
     <th>consent to information being stolen</th>
     <th>unga bunga</th>
-    <th>created at</th>
+    <th>created</th>
+    <th>hard delete</th>
   </tr>
   {%for profile in profiles%}
   <tr>
@@ -23,19 +24,21 @@
     <td>{{profile.mName}}</td>
     <td>{{profile.con}}</td>
     <td>{{profile.ungaBunga}}</td>
-    <td>{{profile.created_at}}</td>
-    <div>
-      <form method="POST" action="{{url_for('admin_profilesDeleteButton')}}">
-        <input
-          type="hidden"
-          name="profileId"
-          id="profileId"
-          value="{{profile.id}}"
-        />
-        <input name="deleteStyle" type="hidden" value="hard" />
-        <button type="submit">hard delete</button>
-      </form>
-    </div>
+    <td>{{profile.date_created}}</td>
+    <td>
+      <div>
+        <form method="POST" action="{{url_for('admin_profilesDeleteButton')}}">
+          <input
+            type="hidden"
+            name="profileId"
+            id="profileId"
+            value="{{profile.id}}"
+          />
+          <input name="deleteStyle" type="hidden" value="hard" />
+          <button type="submit">delete</button>
+        </form>
+      </div>
+    </td>
   </tr>
   {%endfor%}
 </table>
