@@ -3,10 +3,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return redirect(url_for('success'))
+    return redirect(url_for('form'))
 
-@app.route('/success', methods=['GET', 'POST'])
-def success():
+@app.route('/form', methods=['GET', 'POST'])
+def form():
     if request.method == 'POST':
         name = request.form.get('name', '').strip()
         num = request.form.get('num', '').strip()
@@ -32,3 +32,7 @@ def success():
             ungaBunga=ungaBunga
         )
     return render_template('defaultForm.html')
+
+@app.route('/disclaimer')
+def disclaimer():
+    return render_template('disclaimer.html')
