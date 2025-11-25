@@ -24,6 +24,18 @@
     <td>{{profile.con}}</td>
     <td>{{profile.ungaBunga}}</td>
     <td>{{profile.created_at}}</td>
+    <div>
+      <form method="POST" action="{{url_for('admin_profilesDeleteButton')}}">
+        <input
+          type="hidden"
+          name="profileId"
+          id="profileId"
+          value="{{profile.id}}"
+        />
+        <input name="deleteStyle" type="hidden" value="hard" />
+        <button type="submit">hard delete</button>
+      </form>
+    </div>
   </tr>
   {%endfor%}
 </table>
