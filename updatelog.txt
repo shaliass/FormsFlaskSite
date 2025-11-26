@@ -1,0 +1,21 @@
+document created/written for 11/26/25
+
+necessary changes to use CRUD (create/read/update/delete):
+- UPDATE feature for modifying existing saved profiles
+
+new features
+- enforcing certain parameters on form entries (e.g. CVV/card boxes only allow numbers, name boxes only allow A-Z/a-z and spaces)
+    ^ could be expanded to show specific warnings for failing to meet pattern requirements in a future update
+- CSS updates
+
+updates made:
+- app.py, admin_profiles -> changed to include an update feature for modifying existing profiles, pushed to withDB branch on GitHub
+    ^ delete functionality was created yesterday and already a part of the site
+- defaultForm + profileEdit -> changed to enforce certain parameters, app.py was not modified. pushed to withDB branch
+
+
+commands to run in terminal:
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+flask run
