@@ -12,6 +12,7 @@
     <th>consent to information being stolen</th>
     <th>unga bunga</th>
     <th>created</th>
+    <th>edit</th>
     <th>hard delete</th>
   </tr>
   {%for profile in profiles%}
@@ -25,6 +26,11 @@
     <td>{{profile.con}}</td>
     <td>{{profile.ungaBunga}}</td>
     <td>{{profile.date_created}}</td>
+    <td>
+      <a href="{{url_for('admin_profiles_edit')}}?profileId={{profile.id}}"
+        ><button>Edit</button></a
+      >
+    </td>
     <td>
       <div>
         <form method="POST" action="{{url_for('admin_profilesDeleteButton')}}">

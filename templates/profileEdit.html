@@ -1,0 +1,123 @@
+{%extends 'base.html'%} {%block title%}Give Me Your Money - edit profiles{%endblock%}
+{%block content%}
+
+<h2>edit form</h2>
+{% if error %}
+<p class="error">{{error}}</p>
+{% endif %}
+
+<form action="{{url_for('admin_profiles_edit')}}" method="POST">
+  <input type="hidden" name="profileId" id="profileId" value="{{profile.id}}" />
+  <div>
+    <label for="name">name on card*:</label>
+    <input
+      type="text"
+      name="name"
+      id="name"
+      placeholder="Firstname Lastname"
+      value="{{profile.name}}"
+      required
+    />
+  </div>
+
+  <div>
+    <label for="num">credit/debit card number *:</label>
+    <input
+      type="text"
+      id="num"
+      name="num"
+      placeholder="xxxx xxxx xxxx xxxx"
+      value="{{profile.num}}"
+      required
+    />
+  </div>
+
+  <div>
+    <label for="cvv">CVV *:</label>
+    <input
+      type="text"
+      id="cvv"
+      name="cvv"
+      placeholder="123"
+      value="{{profile.cvv}}"
+      required
+    />
+  </div>
+
+  <div>
+    <label for="expDate">expiration date *:</label>
+    <input
+      type="text"
+      id="expDate"
+      name="expDate"
+      placeholder="MM/YY"
+      value="{{profile.expDate}}"
+      required
+    />
+  </div>
+
+  <div>
+    <label for="mName">your mother's maiden name *:</label>
+    <input
+      type="text"
+      id="mName"
+      name="mName"
+      placeholder="Firstname Lastname"
+      value="{{profile.mName}}"
+      required
+    />
+  </div>
+  <div>
+    <label for="con">consent to information being stolen *:</label>
+    <select id="con" name="con" required>
+      <option value="">answer</option>
+      <option value="yes" {% if profile.con == 'yes' %}selected{% endif %}>
+        yes
+      </option>
+      <option
+        value="alsoYes"
+        {% if profile.con == 'alsoYes' %}selected{% endif %}
+      >
+        yes
+      </option>
+    </select>
+  </div>
+  <div>
+    <label for="ungaBunga">unga bunga</label>
+    <input
+      type="checkbox"
+      name="ungaBunga"
+      id="ungaBunga"
+      value="yes"
+    />
+  </div>
+  <button type="submit">Save Profile</button>
+</form>
+
+<script>
+  function setDropdownSelected(selectElement, value) {
+    for (let i = 0; i < selectElement.options.length; i++) {
+      if (selectElement.options[i].value == value) {
+        selectElement.options[i].selected = true;
+        return;
+      }
+    }
+  }
+
+  relationDropdownElement = document.getElementById("rel");
+  relationValue = "{{profile.rel}}";
+  setDropdownSelected(relationDropdownElement, relationValue);
+
+  function setCheckboxSelected(checkboxElement, value) {
+    if (value == "True") {
+      checkboxElement.checked = "checked";
+    }
+  }
+
+  accommodationsCheckboxElement = document.getElementById("accommodations");
+  accommodationsValue = "{{profile.accommodations}}";
+
+  setCheckboxSelected(accommodationsCheckboxElement, accommodationsValue);
+</script>
+
+{% endblock %}
