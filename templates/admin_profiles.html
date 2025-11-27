@@ -1,51 +1,58 @@
 {%extends 'base.html'%} {%block title%}Give Me Your Money - profiles{%endblock%}
 {%block content%}
 <h2>all profiles</h2>
-<table class="table table-striped" border="1">
-  <tr>
-    <th>ID</th>
-    <th>name</th>
-    <th>card number</th>
-    <th>CVV</th>
-    <th>expiration date</th>
-    <th>mother's maiden name</th>
-    <th>consent to information being stolen</th>
-    <th>unga bunga</th>
-    <th>created</th>
-    <th>edit</th>
-    <th>hard delete</th>
-  </tr>
+<table class="styled-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>name</th>
+      <th>card number</th>
+      <th>CVV</th>
+      <th>expiration date</th>
+      <th>mother's maiden name</th>
+      <th>consent to information being stolen</th>
+      <th>unga bunga</th>
+      <th>created</th>
+      <th>edit</th>
+      <th>hard delete</th>
+    </tr>
+  </thead>
   {%for profile in profiles%}
-  <tr>
-    <td>{{profile.id}}</td>
-    <td>{{profile.name}}</td>
-    <td>{{profile.num}}</td>
-    <td>{{profile.cvv}}</td>
-    <td>{{profile.expDate}}</td>
-    <td>{{profile.mName}}</td>
-    <td>{{profile.con}}</td>
-    <td>{{profile.ungaBunga}}</td>
-    <td>{{profile.date_created}}</td>
-    <td>
-      <a href="{{url_for('admin_profiles_edit')}}?profileId={{profile.id}}"
-        ><button>Edit</button></a
-      >
-    </td>
-    <td>
-      <div>
-        <form method="POST" action="{{url_for('admin_profilesDeleteButton')}}">
-          <input
-            type="hidden"
-            name="profileId"
-            id="profileId"
-            value="{{profile.id}}"
-          />
-          <input name="deleteStyle" type="hidden" value="hard" />
-          <button type="submit">delete</button>
-        </form>
-      </div>
-    </td>
-  </tr>
+  <tbody>
+    <tr>
+      <td>{{profile.id}}</td>
+      <td>{{profile.name}}</td>
+      <td>{{profile.num}}</td>
+      <td>{{profile.cvv}}</td>
+      <td>{{profile.expDate}}</td>
+      <td>{{profile.mName}}</td>
+      <td>{{profile.con}}</td>
+      <td>{{profile.ungaBunga}}</td>
+      <td>{{profile.date_created}}</td>
+      <td>
+        <a href="{{url_for('admin_profiles_edit')}}?profileId={{profile.id}}"
+          ><button>Edit</button></a
+        >
+      </td>
+      <td>
+        <div>
+          <form
+            method="POST"
+            action="{{url_for('admin_profilesDeleteButton')}}"
+          >
+            <input
+              type="hidden"
+              name="profileId"
+              id="profileId"
+              value="{{profile.id}}"
+            />
+            <input name="deleteStyle" type="hidden" value="hard" />
+            <button type="submit">delete</button>
+          </form>
+        </div>
+      </td>
+    </tr>
+  </tbody>
   {%endfor%}
 </table>
 {%endblock%}
